@@ -48,7 +48,7 @@ export default function WorldClockPage() {
   }, [isCustomTime]);
 
   // Format time for a specific timezone
-  const formatTimeForZone = (date, timeZoneId) => {
+  const formatTimeForZone = (date: Date, timeZoneId: string) => {
     try {
       return date.toLocaleString('en-US', {
         timeZone: timeZoneId,
@@ -61,7 +61,7 @@ export default function WorldClockPage() {
         month: 'short',
         day: 'numeric',
       });
-    } catch (error) {
+    } catch (_error) {
       // Fallback for browsers that don't support certain timezones
       const zone = timeZones.find(tz => tz.id === timeZoneId);
       if (!zone) return 'Invalid timezone';
@@ -91,22 +91,22 @@ export default function WorldClockPage() {
   };
 
   // Remove a timezone from the list
-  const removeTimeZone = (timeZoneId) => {
+  const removeTimeZone = (timeZoneId: string) => {
     setSelectedTimeZones(selectedTimeZones.filter(id => id !== timeZoneId));
   };
 
   // Handle custom date/time changes
-  const handleCustomDateChange = (e) => {
+  const handleCustomDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomDate(e.target.value);
     updateCustomTime(e.target.value, customTime);
   };
 
-  const handleCustomTimeChange = (e) => {
+  const handleCustomTimeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomTime(e.target.value);
     updateCustomTime(customDate, e.target.value);
   };
 
-  const updateCustomTime = (date, time) => {
+  const updateCustomTime = (date: string, time: string) => {
     if (date && time) {
       const dateTime = new Date(`${date}T${time}`);
       if (!isNaN(dateTime.getTime())) {

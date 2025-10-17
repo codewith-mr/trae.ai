@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface HeroProps {
   title: string;
@@ -29,7 +30,7 @@ const Hero = ({
         <p className="text-secondary font-body text-xl md:text-2xl mb-4 max-w-2xl">
           {subtitle}
         </p>
-        <img src="/tagline.png" alt="TBS Tagline" className="w-48 mb-6" />
+        <Image src="/tagline.png" alt="TBS Tagline" className="w-48 mb-6" width={192} height={48} />
         <div className="flex flex-col sm:flex-row gap-4">
           <Link
             href={ctaLink}

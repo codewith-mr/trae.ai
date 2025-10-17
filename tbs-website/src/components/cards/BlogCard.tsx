@@ -78,8 +78,8 @@ const BlogCard = ({
               <p>{excerpt}</p>
               <div className="mt-4">
                 <p>
-                  This is the full content of the blog post. When you click "Read More", 
-                  you'll see the complete article content here. In a real implementation, 
+                  This is the full content of the blog post. When you click &quot;Read More&quot;, 
+                  you&apos;ll see the complete article content here. In a real implementation, 
                   this would contain the full article text from your database or CMS.
                 </p>
                 <p className="mt-2">

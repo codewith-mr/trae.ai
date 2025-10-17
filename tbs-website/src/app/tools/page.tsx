@@ -600,9 +600,9 @@ export default function ToolsPage() {
       {/* Call to Action */}
       <div className="bg-gradient-to-r from-primary/10 to-secondary/10 py-16">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Can't find what you're looking for?</h2>
+          <h2 className="text-3xl font-bold mb-4">Can&apos;t find what you&apos;re looking for?</h2>
           <p className="text-lg mb-8 max-w-2xl mx-auto">
-            We're constantly adding new tools to our collection. Let us know what you need!
+            We&apos;re constantly adding new tools to our collection. Let us know what you need!
           </p>
           <Link 
             href="/contact" 

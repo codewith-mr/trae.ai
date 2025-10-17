@@ -1,6 +1,7 @@
 "use client";
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 
@@ -21,7 +22,7 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex items-center">
-          <img src="/primary2.png" alt="TBS Logo" className="w-20" />
+          <Image src="/primary2.png" alt="TBS Logo" className="w-20" width={80} height={20} />
         </Link>
 
         {/* Desktop Navigation */}

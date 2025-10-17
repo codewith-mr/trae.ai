@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -10,10 +11,12 @@ const Footer = () => {
           {/* Brand Column */}
           <div className="col-span-1">
             <Link href="/" className="flex items-center mb-4">
-              <img 
+              <Image 
                 src="/secondry.png" 
                 alt="TBS Logo" 
                 className="w-full sm:w-33" 
+                width={240}
+                height={60}
                 style={{ maxWidth: '15rem' }} 
               />
             </Link>
