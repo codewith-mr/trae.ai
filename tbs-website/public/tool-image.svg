@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f0fdfa" />
+  <rect x="150" y="150" width="500" height="300" rx="20" fill="#ccfbf1" />
+  
+  <!-- Tools -->
+  <path d="M300,250 L350,200 L370,220 L320,270 Z" fill="#0d9488" />
+  <circle cx="450" cy="250" r="40" fill="#0d9488" />
+  <circle cx="450" cy="250" r="15" fill="#ccfbf1" />
+  
+  <!-- Gear -->
+  <circle cx="550" cy="250" r="30" fill="#0d9488" />
+  <circle cx="550" cy="250" r="10" fill="#ccfbf1" />
+  <path d="M550,210 L560,210 L565,220 L555,220 Z" fill="#0d9488" />
+  <path d="M550,280 L560,280 L565,290 L555,290 Z" fill="#0d9488" />
+  <path d="M510,250 L510,260 L520,265 L520,255 Z" fill="#0d9488" />
+  <path d="M580,250 L580,260 L590,265 L590,255 Z" fill="#0d9488" />
+  <path d="M520,220 L530,215 L540,225 L530,230 Z" fill="#0d9488" />
+  <path d="M560,280 L570,275 L580,285 L570,290 Z" fill="#0d9488" />
+  <path d="M520,280 L530,275 L540,285 L530,290 Z" fill="#0d9488" />
+  <path d="M560,220 L570,215 L580,225 L570,230 Z" fill="#0d9488" />
+  
+  <!-- Title -->
+  <text x="400" y="420" font-family="Arial" font-size="24" font-weight="bold" fill="#115e59" text-anchor="middle">Productivity Tools</text>
+  <text x="400" y="450" font-family="Arial" font-size="18" fill="#0d9488" text-anchor="middle">Optimize your workflow</text>
+</svg>

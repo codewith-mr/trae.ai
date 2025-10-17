@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#fef2f2" />
+  <rect x="150" y="150" width="500" height="300" rx="20" fill="#fee2e2" />
+  
+  <!-- Bitcoin symbol -->
+  <circle cx="350" cy="250" r="80" fill="#f87171" />
+  <text x="350" y="275" font-family="Arial" font-size="100" font-weight="bold" fill="white" text-anchor="middle">₿</text>
+  
+  <!-- Growth chart -->
+  <polyline points="450,300 480,280 510,290 540,260 570,230 600,200" 
+    fill="none" stroke="#ef4444" stroke-width="5" />
+  <circle cx="600" cy="200" r="8" fill="#ef4444" />
+  
+  <!-- Title -->
+  <text x="400" y="420" font-family="Arial" font-size="24" font-weight="bold" fill="#991b1b" text-anchor="middle">Cryptocurrency Investing</text>
+  <text x="400" y="450" font-family="Arial" font-size="18" fill="#ef4444" text-anchor="middle">Build your digital portfolio</text>
+</svg>

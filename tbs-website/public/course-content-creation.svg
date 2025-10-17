@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#fdf2f8" />
+  <rect x="150" y="150" width="500" height="300" rx="20" fill="#fce7f3" />
+  
+  <!-- Video camera -->
+  <rect x="250" y="200" width="120" height="80" rx="10" fill="#db2777" />
+  <circle cx="310" cy="240" r="25" fill="#fce7f3" />
+  <circle cx="310" cy="240" r="15" fill="#db2777" />
+  <rect x="370" y="230" width="40" height="20" rx="5" fill="#db2777" />
+  
+  <!-- Play button -->
+  <circle cx="500" cy="250" r="50" fill="#db2777" />
+  <polygon points="485,225 485,275 525,250" fill="white" />
+  
+  <!-- YouTube-like elements -->
+  <rect x="250" y="320" width="300" height="10" rx="5" fill="#f472b6" />
+  <rect x="250" y="340" width="200" height="10" rx="5" fill="#f472b6" />
+  <rect x="250" y="360" width="250" height="10" rx="5" fill="#f472b6" />
+  
+  <!-- Title -->
+  <text x="400" y="420" font-family="Arial" font-size="24" font-weight="bold" fill="#831843" text-anchor="middle">YouTube Growth Strategy</text>
+  <text x="400" y="450" font-family="Arial" font-size="18" fill="#be185d" text-anchor="middle">Grow your channel and audience</text>
+</svg>

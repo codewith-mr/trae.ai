@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f0f9ff" />
+  <rect x="150" y="150" width="500" height="300" rx="20" fill="#e0f2fe" />
+  
+  <!-- Laptop -->
+  <rect x="300" y="200" width="200" height="140" rx="10" fill="#0369a1" />
+  <rect x="310" y="210" width="180" height="110" rx="5" fill="#f0f9ff" />
+  <rect x="270" y="340" width="260" height="10" rx="5" fill="#0369a1" />
+  
+  <!-- Code symbols -->
+  <text x="330" y="250" font-family="monospace" font-size="16" fill="#0369a1">&lt;div&gt;</text>
+  <text x="330" y="275" font-family="monospace" font-size="16" fill="#0369a1">  &lt;h1&gt;</text>
+  <text x="330" y="300" font-family="monospace" font-size="16" fill="#0369a1">  &lt;/h1&gt;</text>
+  <text x="330" y="325" font-family="monospace" font-size="16" fill="#0369a1">&lt;/div&gt;</text>
+  
+  <!-- Money symbols -->
+  <circle cx="550" cy="230" r="30" fill="#0ea5e9" />
+  <text x="540" y="240" font-family="Arial" font-size="30" font-weight="bold" fill="white">$</text>
+  
+  <circle cx="580" cy="280" r="25" fill="#0ea5e9" />
+  <text x="570" y="290" font-family="Arial" font-size="25" font-weight="bold" fill="white">$</text>
+  
+  <circle cx="540" cy="320" r="20" fill="#0ea5e9" />
+  <text x="533" y="328" font-family="Arial" font-size="20" font-weight="bold" fill="white">$</text>
+  
+  <!-- Title -->
+  <text x="400" y="420" font-family="Arial" font-size="24" font-weight="bold" fill="#0c4a6e" text-anchor="middle">Freelance Web Development</text>
+  <text x="400" y="450" font-family="Arial" font-size="18" fill="#0369a1" text-anchor="middle">Build your business online</text>
+</svg>

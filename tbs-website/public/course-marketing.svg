@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#eff6ff" />
+  <rect x="150" y="150" width="500" height="300" rx="20" fill="#dbeafe" />
+  
+  <!-- Megaphone -->
+  <path d="M250,250 L350,200 L350,300 L250,250 Z" fill="#2563eb" />
+  <rect x="230" y="240" width="30" height="20" rx="5" fill="#2563eb" />
+  
+  <!-- Sound waves -->
+  <path d="M370,210 Q390,210 390,230 Q390,250 410,250 Q430,250 430,270" fill="none" stroke="#2563eb" stroke-width="4" />
+  <path d="M370,230 Q400,230 400,250 Q400,270 430,270 Q460,270 460,290" fill="none" stroke="#2563eb" stroke-width="4" />
+  <path d="M370,250 Q410,250 410,270 Q410,290 450,290 Q490,290 490,310" fill="none" stroke="#2563eb" stroke-width="4" />
+  
+  <!-- Social media icons -->
+  <circle cx="500" cy="220" r="25" fill="#3b82f6" />
+  <text x="500" y="230" font-family="Arial" font-size="30" font-weight="bold" fill="white" text-anchor="middle">f</text>
+  
+  <circle cx="550" cy="270" r="25" fill="#3b82f6" />
+  <text x="550" y="280" font-family="Arial" font-size="25" font-weight="bold" fill="white" text-anchor="middle">in</text>
+  
+  <!-- Title -->
+  <text x="400" y="420" font-family="Arial" font-size="24" font-weight="bold" fill="#1e40af" text-anchor="middle">Digital Marketing Essentials</text>
+  <text x="400" y="450" font-family="Arial" font-size="18" fill="#2563eb" text-anchor="middle">Reach your audience effectively</text>
+</svg>
