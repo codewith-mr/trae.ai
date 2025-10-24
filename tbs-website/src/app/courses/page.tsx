@@ -22,7 +22,6 @@ export default function CoursesPage() {
   // State for filters
   const [selectedCategories, setSelectedCategories] = useState<string[]>(['All']);
   const [selectedLevels, setSelectedLevels] = useState<string[]>([]);
-  const [priceRange, setPriceRange] = useState<number>(300);
   const [sortOption, setSortOption] = useState<string>('Most Popular');
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [filteredCourses, setFilteredCourses] = useState(courses);
@@ -55,14 +54,10 @@ export default function CoursesPage() {
     );
   };
 
-  // Handle price range change
-  const handlePriceRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPriceRange(parseInt(e.target.value));
-  };
-
   // Handle sort change
   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSortOption(e.target.value);
+
   };
 
   // Handle pagination
@@ -85,12 +80,6 @@ export default function CoursesPage() {
       result = result.filter(course => selectedLevels.includes(course.level));
     }
 
-    // Apply price filter
-    result = result.filter(course => {
-      const coursePrice = course.discountPrice || course.price;
-      return coursePrice <= priceRange;
-    });
-
     // Apply sorting
     result = sortCourses(result, sortOption);
 
@@ -103,18 +92,6 @@ export default function CoursesPage() {
     switch (option) {
       case 'Newest':
         return [...coursesToSort].sort((a, b) => parseInt(b.id) - parseInt(a.id));
-      case 'Price: Low to High':
-        return [...coursesToSort].sort((a, b) => {
-          const priceA = a.discountPrice || a.price;
-          const priceB = b.discountPrice || b.price;
-          return priceA - priceB;
-        });
-      case 'Price: High to Low':
-        return [...coursesToSort].sort((a, b) => {
-          const priceA = a.discountPrice || a.price;
-          const priceB = b.discountPrice || b.price;
-          return priceB - priceA;
-        });
       case 'Rating':
         return [...coursesToSort].sort((a, b) => b.rating - a.rating);
       default: // Most Popular
@@ -125,7 +102,7 @@ export default function CoursesPage() {
   // Apply filters whenever filter states change
   useEffect(() => {
     applyFilters();
-  }, [selectedCategories, selectedLevels, priceRange, sortOption]);
+  }, [selectedCategories, selectedLevels, sortOption]);
 
   // Get current courses for pagination
   const indexOfLastCourse = currentPage * coursesPerPage;
@@ -164,9 +141,9 @@ export default function CoursesPage() {
                         id={`category-${category}`}
                         checked={selectedCategories.includes(category)}
                         onChange={() => handleCategoryChange(category)}
-                        className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
+                        className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded cursor-pointer"
                       />
-                      <label htmlFor={`category-${category}`} className="ml-2 text-sm text-neutral-700">
+                      <label htmlFor={`category-${category}`} className="ml-2 text-sm text-neutral-700 cursor-pointer hover:text-primary transition-colors">
                         {category}
                       </label>
                     </div>
@@ -185,9 +162,9 @@ export default function CoursesPage() {
                         id={`level-${level}`}
                         checked={selectedLevels.includes(level)}
                         onChange={() => handleLevelChange(level)}
-                        className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
+                        className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded cursor-pointer"
                       />
-                      <label htmlFor={`level-${level}`} className="ml-2 text-sm text-neutral-700">
+                      <label htmlFor={`level-${level}`} className="ml-2 text-sm text-neutral-700 cursor-pointer hover:text-primary transition-colors">
                         {level}
                       </label>
                     </div>
@@ -195,22 +172,7 @@ export default function CoursesPage() {
                 </div>
               </div>
 
-              {/* Price range filter */}
-              <div className="mb-6">
-                <h3 className="text-lg font-heading font-semibold text-text mb-2">Price Range</h3>
-                <input
-                  type="range"
-                  min="0"
-                  max="300"
-                  value={priceRange}
-                  onChange={handlePriceRangeChange}
-                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-                />
-                <div className="flex justify-between mt-2">
-                  <span className="text-sm text-neutral-700">$0</span>
-                  <span className="text-sm text-neutral-700">${priceRange}</span>
-                </div>
-              </div>
+
             </div>
           </div>
 
@@ -220,21 +182,19 @@ export default function CoursesPage() {
               <h2 className="text-2xl font-heading font-bold text-text">
                 {filteredCourses.length} Courses Available
               </h2>
-              <div className="flex items-center">
-                <label htmlFor="sort" className="mr-2 text-sm text-neutral-700">
+              <div className="flex items-center bg-white shadow-sm rounded-lg px-4 py-2">
+                <label htmlFor="sort" className="mr-3 text-sm font-medium text-neutral-700 cursor-pointer hover:text-primary transition-colors">
                   Sort by:
                 </label>
                 <select
                   id="sort"
                   value={sortOption}
                   onChange={handleSortChange}
-                  className="border border-gray-300 rounded-md text-sm p-2 focus:ring-primary focus:border-primary"
+                  className="border-none text-sm font-medium text-primary hover:text-accent focus:ring-0 focus:outline-none bg-transparent cursor-pointer transition-colors"
                 >
-                  <option>Most Popular</option>
-                  <option>Newest</option>
-                  <option>Price: Low to High</option>
-                  <option>Price: High to Low</option>
-                  <option>Rating</option>
+                  <option className="text-neutral-800 hover:text-accent hover:bg-gray-50">Most Popular</option>
+                  <option className="text-neutral-800 hover:text-accent hover:bg-gray-50">Newest</option>
+                  <option className="text-neutral-800 hover:text-accent hover:bg-gray-50">Rating</option>
                 </select>
               </div>
             </div>

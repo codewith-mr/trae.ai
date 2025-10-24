@@ -8,48 +8,222 @@ import Link from 'next/link';
 // Import course data from the coursesData.ts file
 import { courses } from '@/app/courses/coursesData';
 
+// Mock course data with single format per course
+const courseFormats = {
+  'freelance-web-development': {
+    format: 'video'
+  },
+  'youtube-growth-strategy': {
+    format: 'text'
+  },
+  'stock-trading-fundamentals': {
+    format: 'video'
+  },
+  'digital-marketing-essentials': {
+    format: 'text'
+  },
+  'cryptocurrency-investing': {
+    format: 'video'
+  },
+  'graphic-design-freelancing': {
+    format: 'text'
+  }
+};
+
 // Mock class data - in a real app, this would come from an API
 const classData = {
   'freelance-web-development': [
-    { id: 1, title: 'Introduction to Freelance Web Development', videoUrl: 'https://drive.google.com/file/d/1abc123/view' },
-    { id: 2, title: 'Finding Your First Clients', videoUrl: 'https://drive.google.com/file/d/2def456/view' },
-    { id: 3, title: 'Pricing Your Services', videoUrl: 'https://drive.google.com/file/d/3ghi789/view' },
-    { id: 4, title: 'Building a Portfolio', videoUrl: 'https://drive.google.com/file/d/4jkl012/view' },
-    { id: 5, title: 'Client Communication', videoUrl: 'https://drive.google.com/file/d/5mno345/view' },
+    { 
+      id: 1, 
+      title: 'Introduction to Freelance Web Development', 
+      videoUrl: 'https://drive.google.com/file/d/1abc123/view',
+      textContent: 'This is the text version of the Introduction to Freelance Web Development course. It covers all the basics you need to know to get started as a freelance web developer.'
+    },
+    { 
+      id: 2, 
+      title: 'Finding Your First Clients', 
+      videoUrl: 'https://drive.google.com/file/d/2def456/view',
+      textContent: 'Learn effective strategies for finding and securing your first clients as a freelance web developer. This text course covers networking, online platforms, and pitching techniques.'
+    },
+    { 
+      id: 3, 
+      title: 'Pricing Your Services', 
+      videoUrl: 'https://drive.google.com/file/d/3ghi789/view',
+      textContent: 'This text guide explains how to price your web development services competitively while ensuring profitability. Learn about hourly vs. project-based pricing and value-based pricing models.'
+    },
+    { 
+      id: 4, 
+      title: 'Building a Portfolio', 
+      videoUrl: 'https://drive.google.com/file/d/4jkl012/view',
+      textContent: 'This text guide walks you through the process of building an effective portfolio that showcases your web development skills and attracts potential clients.'
+    },
+    { 
+      id: 5, 
+      title: 'Client Communication', 
+      videoUrl: 'https://drive.google.com/file/d/5mno345/view',
+      textContent: 'Effective client communication is essential for successful freelancing. This text course covers communication tools, setting expectations, and handling difficult conversations.'
+    },
   ],
   'youtube-growth-strategy': [
-    { id: 1, title: 'YouTube Algorithm Basics', videoUrl: 'https://drive.google.com/file/d/6pqr678/view' },
-    { id: 2, title: 'Content Strategy for Growth', videoUrl: 'https://drive.google.com/file/d/7stu901/view' },
-    { id: 3, title: 'Thumbnail and Title Optimization', videoUrl: 'https://drive.google.com/file/d/8vwx234/view' },
-    { id: 4, title: 'Audience Engagement Tactics', videoUrl: 'https://drive.google.com/file/d/9yz0567/view' },
+    { 
+      id: 1, 
+      title: 'YouTube Algorithm Basics', 
+      videoUrl: 'https://drive.google.com/file/d/6pqr678/view',
+      textContent: 'Understanding the YouTube algorithm is crucial for channel growth. This text guide explains how the algorithm works and how to optimize your content for better visibility.'
+    },
+    { 
+      id: 2, 
+      title: 'Content Strategy for Growth', 
+      videoUrl: 'https://drive.google.com/file/d/7stu901/view',
+      textContent: 'Develop a content strategy that drives channel growth. This text guide covers content pillars, audience research, and content calendars.'
+    },
+    { 
+      id: 3, 
+      title: 'Thumbnail and Title Optimization', 
+      videoUrl: 'https://drive.google.com/file/d/8vwx234/view',
+      textContent: 'Learn how to create compelling thumbnails and titles that drive clicks and views. This text course covers design principles, psychology, and A/B testing strategies.'
+    },
+    { 
+      id: 4, 
+      title: 'Audience Engagement Tactics', 
+      videoUrl: 'https://drive.google.com/file/d/9yz0567/view',
+      textContent: 'Engaging with your audience is key to building a loyal community. This text guide covers comment strategies, community posts, and other engagement techniques.'
+    },
   ],
   'stock-trading-fundamentals': [
-    { id: 1, title: 'Understanding the Stock Market', videoUrl: 'https://drive.google.com/file/d/10abc890/view' },
-    { id: 2, title: 'Technical Analysis Basics', videoUrl: 'https://drive.google.com/file/d/11def123/view' },
-    { id: 3, title: 'Fundamental Analysis', videoUrl: 'https://drive.google.com/file/d/12ghi456/view' },
-    { id: 4, title: 'Risk Management Strategies', videoUrl: 'https://drive.google.com/file/d/13jkl789/view' },
-    { id: 5, title: 'Building a Diversified Portfolio', videoUrl: 'https://drive.google.com/file/d/14mno012/view' },
-    { id: 6, title: 'Advanced Trading Techniques', videoUrl: 'https://drive.google.com/file/d/15pqr345/view' },
+    { 
+      id: 1, 
+      title: 'Understanding the Stock Market', 
+      videoUrl: 'https://drive.google.com/file/d/10abc890/view'
+    },
+    { 
+      id: 2, 
+      title: 'Technical Analysis Basics', 
+      videoUrl: 'https://drive.google.com/file/d/11def123/view'
+    },
+    { 
+      id: 3, 
+      title: 'Fundamental Analysis', 
+      videoUrl: 'https://drive.google.com/file/d/12ghi456/view'
+    },
+    { 
+      id: 4, 
+      title: 'Risk Management Strategies', 
+      videoUrl: 'https://drive.google.com/file/d/13jkl789/view',
+      hasTextContent: false
+    },
+    { 
+      id: 5, 
+      title: 'Building a Diversified Portfolio', 
+      videoUrl: 'https://drive.google.com/file/d/14mno012/view',
+      hasTextContent: true,
+      textContent: 'This text guide explains the principles of portfolio diversification, asset allocation, and risk management to help you build a resilient investment portfolio.'
+    },
+    { 
+      id: 6, 
+      title: 'Advanced Trading Techniques', 
+      videoUrl: 'https://drive.google.com/file/d/15pqr345/view',
+      hasTextContent: false
+    },
   ],
   'digital-marketing-essentials': [
-    { id: 1, title: 'Digital Marketing Overview', videoUrl: 'https://drive.google.com/file/d/16stu678/view' },
-    { id: 2, title: 'SEO Fundamentals', videoUrl: 'https://drive.google.com/file/d/17vwx901/view' },
-    { id: 3, title: 'Social Media Marketing', videoUrl: 'https://drive.google.com/file/d/18yz0234/view' },
-    { id: 4, title: 'Email Marketing Strategies', videoUrl: 'https://drive.google.com/file/d/19abc567/view' },
-    { id: 5, title: 'Paid Advertising Campaigns', videoUrl: 'https://drive.google.com/file/d/20def890/view' },
+    { 
+      id: 1, 
+      title: 'Digital Marketing Overview', 
+      videoUrl: 'https://drive.google.com/file/d/16stu678/view',
+      hasTextContent: true,
+      textContent: 'This comprehensive text guide provides an overview of digital marketing channels, strategies, and metrics to help you build an effective online presence.'
+    },
+    { 
+      id: 2, 
+      title: 'SEO Fundamentals', 
+      videoUrl: 'https://drive.google.com/file/d/17vwx901/view',
+      hasTextContent: true,
+      textContent: 'Learn the basics of search engine optimization, including keyword research, on-page optimization, and link building strategies in this detailed text course.'
+    },
+    { 
+      id: 3, 
+      title: 'Social Media Marketing', 
+      videoUrl: 'https://drive.google.com/file/d/18yz0234/view',
+      hasTextContent: false
+    },
+    { 
+      id: 4, 
+      title: 'Email Marketing Strategies', 
+      videoUrl: 'https://drive.google.com/file/d/19abc567/view',
+      hasTextContent: true,
+      textContent: 'This text guide covers email marketing best practices, including list building, segmentation, automation, and campaign optimization techniques.'
+    },
+    { 
+      id: 5, 
+      title: 'Paid Advertising Campaigns', 
+      videoUrl: 'https://drive.google.com/file/d/20def890/view',
+      hasTextContent: false
+    },
   ],
   'cryptocurrency-investing': [
-    { id: 1, title: 'Blockchain Technology Basics', videoUrl: 'https://drive.google.com/file/d/21ghi123/view' },
-    { id: 2, title: 'Understanding Cryptocurrencies', videoUrl: 'https://drive.google.com/file/d/22jkl456/view' },
-    { id: 3, title: 'Crypto Wallets and Security', videoUrl: 'https://drive.google.com/file/d/23mno789/view' },
-    { id: 4, title: 'Investment Strategies', videoUrl: 'https://drive.google.com/file/d/24pqr012/view' },
+    { 
+      id: 1, 
+      title: 'Blockchain Technology Basics', 
+      videoUrl: 'https://drive.google.com/file/d/21ghi123/view',
+      hasTextContent: true,
+      textContent: 'This text course explains the fundamentals of blockchain technology, including distributed ledgers, consensus mechanisms, and smart contracts.'
+    },
+    { 
+      id: 2, 
+      title: 'Understanding Cryptocurrencies', 
+      videoUrl: 'https://drive.google.com/file/d/22jkl456/view',
+      hasTextContent: true,
+      textContent: 'Learn about different types of cryptocurrencies, their use cases, and how they differ from traditional currencies in this comprehensive text guide.'
+    },
+    { 
+      id: 3, 
+      title: 'Crypto Wallets and Security', 
+      videoUrl: 'https://drive.google.com/file/d/23mno789/view',
+      hasTextContent: false
+    },
+    { 
+      id: 4, 
+      title: 'Investment Strategies', 
+      videoUrl: 'https://drive.google.com/file/d/24pqr012/view',
+      hasTextContent: true,
+      textContent: 'This text course covers various cryptocurrency investment strategies, including dollar-cost averaging, portfolio allocation, and risk management techniques.'
+    },
   ],
   'graphic-design-freelancing': [
-    { id: 1, title: 'Setting Up Your Design Business', videoUrl: 'https://drive.google.com/file/d/25stu345/view' },
-    { id: 2, title: 'Finding Design Clients', videoUrl: 'https://drive.google.com/file/d/26vwx678/view' },
-    { id: 3, title: 'Pricing Design Projects', videoUrl: 'https://drive.google.com/file/d/27yz0901/view' },
-    { id: 4, title: 'Building a Design Portfolio', videoUrl: 'https://drive.google.com/file/d/28abc234/view' },
-    { id: 5, title: 'Client Management for Designers', videoUrl: 'https://drive.google.com/file/d/29def567/view' },
+    { 
+      id: 1, 
+      title: 'Setting Up Your Design Business', 
+      videoUrl: 'https://drive.google.com/file/d/25stu345/view',
+      hasTextContent: true,
+      textContent: 'This text guide walks you through the process of setting up your graphic design freelance business, including legal requirements, branding, and business planning.'
+    },
+    { 
+      id: 2, 
+      title: 'Finding Design Clients', 
+      videoUrl: 'https://drive.google.com/file/d/26vwx678/view',
+      hasTextContent: false
+    },
+    { 
+      id: 3, 
+      title: 'Pricing Design Projects', 
+      videoUrl: 'https://drive.google.com/file/d/27yz0901/view',
+      hasTextContent: true,
+      textContent: 'Learn how to price your graphic design services competitively while ensuring profitability. This text course covers different pricing models and negotiation strategies.'
+    },
+    { 
+      id: 4, 
+      title: 'Building a Design Portfolio', 
+      videoUrl: 'https://drive.google.com/file/d/28abc234/view',
+      hasTextContent: true,
+      textContent: 'This comprehensive text guide explains how to create an effective design portfolio that showcases your skills and attracts potential clients.'
+    },
+    { 
+      id: 5, 
+      title: 'Client Management for Designers', 
+      videoUrl: 'https://drive.google.com/file/d/29def567/view',
+      hasTextContent: false
+    },
   ],
 };
 
@@ -58,18 +232,29 @@ export default function CoursePage() {
   const slug = params?.slug as string;
   const [course, setCourse] = useState<any>(null);
   const [classes, setClasses] = useState<any[]>([]);
+  const [courseFormat, setCourseFormat] = useState<'video' | 'text'>('video');
+  const [selectedClassId, setSelectedClassId] = useState<number | null>(null);
+  const [expandedTextClass, setExpandedTextClass] = useState<number | null>(null);
 
   useEffect(() => {
     // Find the course by slug
     const foundCourse = courses.find((c: any) => c.slug === slug);
     if (foundCourse) {
       setCourse(foundCourse);
+      // Set course format from course data
+      setCourseFormat(foundCourse.format || 'video');
     }
 
     // Get classes for this course
     const courseClasses = classData[slug as keyof typeof classData] || [];
     setClasses(courseClasses);
   }, [slug]);
+
+  // Function to get next class recommendation
+  const getNextClass = (currentClassId: number) => {
+    const nextClassId = currentClassId + 1;
+    return classes.find(c => c.id === nextClassId);
+  };
 
   if (!course) {
     return (
@@ -166,49 +351,129 @@ export default function CoursePage() {
       {/* Course Content */}
       <div className="container mx-auto px-4 py-12">
         <div className="bg-white rounded-lg shadow-1 p-8">
-          <h2 className="text-2xl font-heading font-bold text-primary mb-6">Course Content</h2>
-          
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl font-heading font-bold text-primary">Course Content</h2>
+            
+            {/* Format Badge */}
+            <div className={`px-3 py-1 text-sm font-semibold rounded-full flex items-center ${
+              courseFormat === 'video' 
+                ? 'bg-blue-100 text-blue-800' 
+                : 'bg-amber-100 text-amber-800'
+            }`}>
+              {courseFormat === 'video' ? (
+                <>
+                  <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zm12.553 1.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path>
+                  </svg>
+                  Video Course
+                </>
+              ) : (
+                <>
+                  <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clipRule="evenodd"></path>
+                  </svg>
+                  Text Course
+                </>
+              )}
+            </div>
+          </div>
+
           {/* Class List */}
           <div className="space-y-4">
             {classes.map((classItem) => (
-              <a 
-                key={classItem.id}
-                href={classItem.videoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block bg-background hover:bg-gray-100 rounded-lg p-4 transition-colors border border-gray-200 hover:border-primary"
+              <div 
+                key={classItem.id} 
+                className={`border border-gray-200 rounded-lg p-4 hover:border-primary transition-colors ${
+                  courseFormat === 'text' ? 'cursor-pointer' : ''
+                }`}
+                onClick={() => {
+                  if (courseFormat === 'text') {
+                    setExpandedTextClass(expandedTextClass === classItem.id ? null : classItem.id);
+                  }
+                }}
               >
-                <div className="flex items-center">
-                  <div className="flex-shrink-0 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center mr-4">
-                    <span className="font-bold">{classItem.id}</span>
-                  </div>
-                  <div className="flex-grow">
-                    <h3 className="text-lg font-heading font-semibold text-text">Class {classItem.id}: {classItem.title}</h3>
-                  </div>
-                  <div className="flex-shrink-0">
-                    <svg 
-                      className="w-6 h-6 text-primary" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      viewBox="0 0 24 24" 
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path 
-                        strokeLinecap="round" 
-                        strokeLinejoin="round" 
-                        strokeWidth={2} 
-                        d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" 
-                      />
-                      <path 
-                        strokeLinecap="round" 
-                        strokeLinejoin="round" 
-                        strokeWidth={2} 
-                        d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" 
-                      />
-                    </svg>
+                <div className="flex justify-between items-center">
+                  <h3 className="text-lg font-semibold text-text">
+                    {classItem.id}. {classItem.title}
+                  </h3>
+                  
+                  {/* Content Access */}
+                  <div>
+                    {courseFormat === 'video' && classItem.videoUrl && (
+                      <a 
+                        href={classItem.videoUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-primary hover:text-accent"
+                      >
+                        <svg className="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zm12.553 1.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path>
+                        </svg>
+                        Watch Video
+                      </a>
+                    )}
+                    {courseFormat === 'text' && (
+                      <button 
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setExpandedTextClass(expandedTextClass === classItem.id ? null : classItem.id);
+                        }}
+                        className="inline-flex items-center text-primary hover:text-accent"
+                      >
+                        {expandedTextClass === classItem.id ? (
+                          <>
+                            <svg className="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                              <path fillRule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clipRule="evenodd"></path>
+                            </svg>
+                            Hide Content
+                          </>
+                        ) : (
+                          <>
+                            <svg className="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                              <path fillRule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clipRule="evenodd"></path>
+                            </svg>
+                            Read Content
+                          </>
+                        )}
+                      </button>
+                    )}
                   </div>
                 </div>
-              </a>
+                
+                {/* Text Content Display for text courses */}
+                {courseFormat === 'text' && expandedTextClass === classItem.id && (
+                  <div className="mt-4 p-4 bg-gray-50 rounded-md">
+                    <p className="text-neutral-700">{classItem.textContent || "Text content for this lesson is being prepared."}</p>
+                    
+                    {/* Next Class Recommendation */}
+                    {getNextClass(classItem.id) && (
+                      <div className="mt-6 p-4 border border-gray-200 rounded-lg bg-white">
+                        <h4 className="font-semibold text-primary mb-2">Next Recommended Class</h4>
+                        <div className="flex items-center">
+                          <div className="flex-shrink-0 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center mr-4">
+                            <span className="font-bold">{getNextClass(classItem.id)?.id}</span>
+                          </div>
+                          <div>
+                            <p className="font-medium">{getNextClass(classItem.id)?.title}</p>
+                            <button 
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setExpandedTextClass(getNextClass(classItem.id)?.id || null);
+                              }}
+                              className="text-sm text-primary hover:text-accent mt-1 inline-flex items-center"
+                            >
+                              <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
+                              </svg>
+                              Continue to this class
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
             ))}
           </div>
         </div>

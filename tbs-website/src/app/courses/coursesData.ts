@@ -16,6 +16,7 @@ export const courses: CourseCardProps[] = [
     reviewCount: 245,
     imageUrl: '/course-freelancing.svg',
     category: 'Freelancing',
+    format: 'video',
   },
   {
     id: '2',
@@ -30,6 +31,7 @@ export const courses: CourseCardProps[] = [
     reviewCount: 189,
     imageUrl: '/course-content-creation.svg',
     category: 'Content Creation',
+    format: 'text',
   },
   {
     id: '3',
@@ -45,6 +47,7 @@ export const courses: CourseCardProps[] = [
     reviewCount: 312,
     imageUrl: '/course_img.jpg',
     category: 'Trading',
+    format: 'video',
   },
   {
     id: '4',
@@ -60,6 +63,7 @@ export const courses: CourseCardProps[] = [
     reviewCount: 178,
     imageUrl: '/course-marketing.svg',
     category: 'Marketing',
+    format: 'text',
   },
   {
     id: '5',
@@ -74,6 +78,7 @@ export const courses: CourseCardProps[] = [
     reviewCount: 156,
     imageUrl: '/course-investing.svg',
     category: 'Investing',
+    format: 'video',
   },
   {
     id: '6',
@@ -88,5 +93,6 @@ export const courses: CourseCardProps[] = [
     reviewCount: 203,
     imageUrl: '/course-freelancing.svg',
     category: 'Freelancing',
+    format: 'text',
   },
 ];
