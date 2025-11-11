@@ -75,10 +75,10 @@ export default function BlogPage() {
     setFilteredPosts(filtered);
   };
 
-  // Apply filters when category or search changes
+  // Apply filters when category changes; search applies on submit only
   useEffect(() => {
     applyFilters();
-  }, [selectedCategory, searchQuery]);
+  }, [selectedCategory]);
 
   // Calculate pagination
   const indexOfLastPost = currentPage * postsPerPage;
@@ -98,15 +98,15 @@ export default function BlogPage() {
         </div>
 
         {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center mb-8">
+        <div className="flex flex-wrap justify-center gap-3 mb-8">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => handleCategorySelect(category)}
-              className={`px-4 py-2 mx-2 mb-2 rounded-md transition-colors ${
+              className={`inline-flex items-center px-4 py-2 rounded-full shadow-sm text-sm font-medium transition-colors border ${
                 selectedCategory === category
-                  ? 'bg-primary text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-primary text-white border-primary'
+                  : 'bg-white text-neutral-700 border-neutral-200 hover:border-primary hover:text-primary'
               }`}
             >
               {category}

@@ -95,24 +95,28 @@ export default function TipsAndTricksPage() {
     }
   };
 
-  // Handle search
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const query = e.target.value;
-    setSearchQuery(query);
-    
+  // Handle search (submit-only)
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const query = searchQuery.trim().toLowerCase();
+
     if (selectedCategory === 'All') {
       setFilteredTips(
         tipsAndTricks.filter(tip => 
-          tip.title.toLowerCase().includes(query.toLowerCase()) || 
-          tip.description.toLowerCase().includes(query.toLowerCase())
+          tip.title.toLowerCase().includes(query) || 
+          tip.description.toLowerCase().includes(query)
         )
       );
     } else {
       setFilteredTips(
         tipsAndTricks.filter(tip => 
           tip.category === selectedCategory && 
-          (tip.title.toLowerCase().includes(query.toLowerCase()) || 
-          tip.description.toLowerCase().includes(query.toLowerCase()))
+          (tip.title.toLowerCase().includes(query) || 
+          tip.description.toLowerCase().includes(query))
         )
       );
     }
@@ -130,20 +134,20 @@ export default function TipsAndTricksPage() {
             <p className="text-xl text-secondary-light mb-8">
               Practical advice, insider knowledge, and clever hacks to help you work smarter, not harder.
             </p>
-            <div className="relative max-w-2xl mx-auto">
+            <form onSubmit={handleSearchSubmit} className="relative max-w-2xl mx-auto">
               <input
                 type="text"
                 placeholder="Search for tips..."
                 className="w-full px-6 py-4 rounded-full text-text border-none focus:ring-2 focus:ring-secondary"
                 value={searchQuery}
-                onChange={handleSearch}
+                onChange={handleSearchChange}
               />
-              <button className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-accent text-white p-3 rounded-full hover:bg-secondary-dark transition-colors">
+              <button type="submit" className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-accent text-white p-3 rounded-full hover:bg-secondary-dark transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
               </button>
-            </div>
+            </form>
           </div>
         </div>
       </div>

@@ -35,6 +35,24 @@ export const theme: Config['theme'] = {
     screens: designTokens.breakpoints,
     transitionDuration: designTokens.transitions.duration,
     transitionTimingFunction: designTokens.transitions.timing,
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '1rem',
+        sm: '2rem',
+        lg: '4rem',
+        xl: '5rem',
+        '2xl': '6rem',
+      },
+      screens: {
+        xs: '100%',
+        sm: '100%',
+        md: '100%',
+        lg: '100%',
+        xl: '1280px',
+        '2xl': '1536px',
+      },
+    },
   },
 };
 

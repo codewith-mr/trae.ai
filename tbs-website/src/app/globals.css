@@ -36,3 +36,40 @@ h1, h2, h3, h4, h5, h6 {
     text-wrap: balance;
   }
 }
+
+/* Custom container responsiveness - 90-95% max-width before 1280px breakpoint */
+@layer components {
+  .container {
+    max-width: 95%;
+  }
+  
+  @media (min-width: 640px) {
+    .container {
+      max-width: 90%;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .container {
+      max-width: 90%;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .container {
+      max-width: 90%;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    .container {
+      max-width: 1280px;
+    }
+  }
+  
+  @media (min-width: 1536px) {
+    .container {
+      max-width: 1536px;
+    }
+  }
+}

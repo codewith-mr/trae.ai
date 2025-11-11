@@ -4,6 +4,7 @@ import MainLayout from '@/components/layout/MainLayout';
 import CourseCard from '@/components/cards/CourseCard';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { courses } from './coursesData';
 
 // Categories for filtering
@@ -14,6 +15,9 @@ const categories = [
   'Trading',
   'Marketing',
   'Investing',
+  'AI & Machine Learning',
+  'Data Science',
+  'Cloud Computing',
 ];
 
 // Levels for filtering
@@ -26,6 +30,7 @@ export default function CoursesPage() {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [filteredCourses, setFilteredCourses] = useState(courses);
   const coursesPerPage = 4;
+  const searchParams = useSearchParams();
 
   // Handle category filter change
   const handleCategoryChange = (category: string) => {
@@ -59,6 +64,14 @@ export default function CoursesPage() {
     setSortOption(e.target.value);
 
   };
+
+  // Initialize category from query param
+  useEffect(() => {
+    const categoryParam = searchParams.get('category');
+    if (categoryParam && categories.includes(categoryParam)) {
+      setSelectedCategories([categoryParam]);
+    }
+  }, [searchParams]);
 
   // Handle pagination
   const handlePageChange = (pageNumber: number) => {

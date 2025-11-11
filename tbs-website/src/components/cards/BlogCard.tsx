@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { } from 'react';
 
 export interface BlogCardProps {
   id: string;
@@ -29,12 +29,7 @@ const BlogCard = ({
   readTime,
   imageUrl,
 }: BlogCardProps) => {
-  const [showFullContent, setShowFullContent] = useState(false);
-
-  const toggleContent = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setShowFullContent(!showFullContent);
-  };
+  // Removed expandable content and Read More button per design update
 
   return (
     <div className="bg-white rounded-lg overflow-hidden shadow-1 transition-shadow hover:shadow-2 flex flex-col h-full">
@@ -62,73 +57,26 @@ const BlogCard = ({
         <Link 
           href={`/blog/${slug}`} 
           className="group"
-          onClick={(e) => {
-            if (showFullContent) {
-              e.preventDefault();
-            }
-          }}
         >
           <h3 className="text-xl font-heading font-bold text-text mb-2 group-hover:text-primary transition-colors">
             {title}
           </h3>
         </Link>
         <div className="text-neutral-600 mb-4 text-sm">
-          {showFullContent ? (
-            <div>
-              <p>{excerpt}</p>
-              <div className="mt-4">
-                <p>
-                  This is the full content of the blog post. When you click &quot;Read More&quot;, 
-                  you&apos;ll see the complete article content here. In a real implementation, 
-                  this would contain the full article text from your database or CMS.
-                </p>
-                <p className="mt-2">
-                  The article would continue with more paragraphs, images, and other content
-                  that makes up the complete blog post.
-                </p>
-              </div>
-            </div>
-          ) : (
-            <p className="line-clamp-3">{excerpt}</p>
-          )}
-          
-          <button 
-            onClick={toggleContent}
-            className="mt-3 px-4 py-1 bg-primary text-white rounded hover:bg-accent transition-colors"
-          >
-            {showFullContent ? 'Show Less' : 'Read More'}
-          </button>
+          <p className="line-clamp-3">{excerpt}</p>
         </div>
 
-        {/* Author and Meta */}
+        {/* Meta (date and read time only) */}
         <div className="flex justify-between items-center mt-auto">
-          <div className="flex items-center">
-            <Image
-              src={author.avatar}
-              alt={author.name}
-              width={32}
-              height={32}
-              className="rounded-full mr-2"
-              unoptimized={author.avatar.endsWith('.svg')}
-            />
-            <div>
-              <span className="text-sm font-semibold text-text block">{author.name}</span>
-              <div className="flex items-center text-xs text-neutral-500">
-                <span>{publishDate}</span>
-                <span className="mx-1">•</span>
-                <span>{readTime}</span>
-              </div>
-            </div>
+          <div className="text-xs text-neutral-500">
+            <span>{publishDate}</span>
+            <span className="mx-1">•</span>
+            <span>{readTime}</span>
           </div>
 
           <Link 
             href={`/blog/${slug}`} 
             className="text-primary hover:text-accent transition-colors"
-            onClick={(e) => {
-              if (showFullContent) {
-                e.preventDefault();
-              }
-            }}
           >
             <span className="sr-only">View full article about {title}</span>
             <svg

@@ -21,7 +21,7 @@ const featuredCourses: CourseCardProps[] = [
     discountPrice: 149.99,
     rating: 4.8,
     reviewCount: 245,
-    imageUrl: '/course-freelancing.svg',
+    imageUrl: '/web.svg',
     category: 'Freelancing',
   },
   {
@@ -121,6 +121,57 @@ export default function Home() {
         secondaryCtaText="Try Free Tools"
         secondaryCtaLink="/tools"
       />
+
+      {/* Mini Categories Section */}
+      <section className="py-10">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl font-heading font-bold text-text">Popular Categories</h2>
+            <Link
+              href="/courses"
+              className="text-primary hover:text-accent transition-colors font-semibold flex items-center"
+            >
+              Browse All
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 ml-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
+              </svg>
+            </Link>
+          </div>
+
+          {/* Category chips */}
+          <div className="flex flex-wrap gap-3">
+            {[
+              'Freelancing',
+              'Content Creation',
+              'Trading',
+              'Marketing',
+              'Investing',
+              'AI & Machine Learning',
+              'Data Science',
+              'Cloud Computing',
+            ].map((cat) => (
+              <Link
+                key={cat}
+                href={`/courses?category=${encodeURIComponent(cat)}`}
+                className="inline-flex items-center px-4 py-2 bg-white border border-neutral-200 rounded-full shadow-sm hover:border-primary hover:text-primary transition-colors text-sm font-medium"
+              >
+                {cat}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Featured Courses Section */}
       <section className="py-16 bg-neutral-100">

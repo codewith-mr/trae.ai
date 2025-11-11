@@ -27,6 +27,18 @@ const courseFormats = {
   },
   'graphic-design-freelancing': {
     format: 'text'
+  },
+  'google-digital-marketing': {
+    format: 'text'
+  },
+  'google-data-analytics': {
+    format: 'video'
+  },
+  'nvidia-deep-learning': {
+    format: 'video'
+  },
+  'microsoft-azure-fundamentals': {
+    format: 'text'
   }
 };
 
@@ -62,6 +74,134 @@ const classData = {
       title: 'Client Communication', 
       videoUrl: 'https://drive.google.com/file/d/5mno345/view',
       textContent: 'Effective client communication is essential for successful freelancing. This text course covers communication tools, setting expectations, and handling difficult conversations.'
+    },
+  ],
+  'google-digital-marketing': [
+    { 
+      id: 1, 
+      title: 'The Digital Marketing Framework', 
+      videoUrl: 'https://www.youtube.com/embed/wHJQ83kAJlM',
+      textContent: 'This module introduces you to the basic concepts of digital marketing and how businesses use online tools to develop a digital marketing strategy. Learn about the main pillars of digital marketing and how to get started.'
+    },
+    { 
+      id: 2, 
+      title: 'Search Engine Optimization (SEO)', 
+      videoUrl: 'https://www.youtube.com/embed/hF515-0Tduk',
+      textContent: 'Learn how search engines work and how to make your website more visible in search results. This module covers keyword research, on-page optimization, and link building strategies to improve your organic search rankings.'
+    },
+    { 
+      id: 3, 
+      title: 'Search Engine Marketing (SEM)', 
+      videoUrl: 'https://www.youtube.com/embed/cOTMWqwUXPU',
+      textContent: 'Discover how to create effective search ad campaigns to reach potential customers. Learn about keyword selection, ad creation, bidding strategies, and campaign optimization techniques.'
+    },
+    { 
+      id: 4, 
+      title: 'Social Media Marketing', 
+      videoUrl: 'https://www.youtube.com/embed/4LhDXH81whk',
+      textContent: 'Explore how to use social media platforms to connect with your audience, build your brand, and drive business results. This module covers content strategy, community management, and paid social advertising.'
+    },
+    { 
+      id: 5, 
+      title: 'Analytics and Data Insights', 
+      videoUrl: 'https://www.youtube.com/embed/Zn7JFZ1eDuI',
+      textContent: 'Learn how to measure the success of your digital marketing efforts using analytics tools. This module covers key metrics, reporting, and how to use data to optimize your marketing strategy.'
+    },
+  ],
+  'google-data-analytics': [
+    { 
+      id: 1, 
+      title: 'Foundations: Data, Data, Everywhere', 
+      videoUrl: 'https://www.youtube.com/embed/qcRlYt28WPM',
+      textContent: 'This course is the first step in your data analytics journey. Learn how data analysts use tools like spreadsheets, SQL, R programming, and Tableau to process, analyze, and visualize data.'
+    },
+    { 
+      id: 2, 
+      title: 'Ask Questions to Make Data-Driven Decisions', 
+      videoUrl: 'https://www.youtube.com/embed/FxQEwLJ5ahw',
+      textContent: 'Learn how to ask effective questions and define problems to solve with data. This course covers the data analysis process and how to use structured thinking to approach data problems.'
+    },
+    { 
+      id: 3, 
+      title: 'Data Cleaning and Preparation', 
+      videoUrl: 'https://www.youtube.com/embed/6gR_OP7r_5I',
+      textContent: 'Discover techniques for cleaning and preparing data for analysis. This course covers data integrity, identifying and handling missing data, and transforming data for analysis.'
+    },
+    { 
+      id: 4, 
+      title: 'Data Analysis with R Programming', 
+      videoUrl: 'https://www.youtube.com/embed/KlLEE-J7TxA',
+      textContent: 'Learn how to use R programming for data analysis. This course covers R syntax, data structures, packages, and creating visualizations with ggplot2.'
+    },
+    { 
+      id: 5, 
+      title: 'Data Visualization and Dashboards', 
+      videoUrl: 'https://www.youtube.com/embed/q2q_rP5-NJE',
+      textContent: 'Master the art of data visualization and learn how to create effective dashboards. This course covers visualization principles, design thinking, and using Tableau for interactive visualizations.'
+    },
+  ],
+  'nvidia-deep-learning': [
+    { 
+      id: 1, 
+      title: 'Introduction to Deep Learning', 
+      videoUrl: 'https://www.youtube.com/embed/6M5VXKLf4D4',
+      textContent: 'This module introduces the fundamental concepts of deep learning, including neural networks, training methodologies, and applications. Learn about the history of deep learning and its recent advancements.'
+    },
+    { 
+      id: 2, 
+      title: 'Neural Network Basics', 
+      videoUrl: 'https://www.youtube.com/embed/uXb3xbhPJtM',
+      textContent: 'Learn about the building blocks of neural networks, including neurons, activation functions, forward and backward propagation, and optimization algorithms.'
+    },
+    { 
+      id: 3, 
+      title: 'Convolutional Neural Networks', 
+      videoUrl: 'https://www.youtube.com/embed/Qwkf688-KoU',
+      textContent: 'Explore convolutional neural networks (CNNs) and their applications in computer vision. This module covers convolution operations, pooling layers, and CNN architectures like AlexNet, VGG, and ResNet.'
+    },
+    { 
+      id: 4, 
+      title: 'Recurrent Neural Networks', 
+      videoUrl: 'https://www.youtube.com/embed/LHXXI4-IEns',
+      textContent: 'Discover recurrent neural networks (RNNs) and their applications in sequence modeling. This module covers LSTM, GRU, and attention mechanisms for natural language processing tasks.'
+    },
+    { 
+      id: 5, 
+      title: 'Generative Adversarial Networks', 
+      videoUrl: 'https://www.youtube.com/embed/Sw9r8CL98N0',
+      textContent: 'Learn about generative adversarial networks (GANs) and their applications in generating realistic images, videos, and other content. This module covers GAN architecture, training challenges, and recent advancements.'
+    },
+  ],
+  'microsoft-azure-fundamentals': [
+    { 
+      id: 1, 
+      title: 'Introduction to Cloud Computing', 
+      videoUrl: 'https://www.youtube.com/embed/QYzJl0Zrc4M',
+      textContent: 'This module introduces the fundamental concepts of cloud computing, including cloud service models (IaaS, PaaS, SaaS) and deployment models (public, private, hybrid). Learn about the benefits and challenges of cloud adoption.'
+    },
+    { 
+      id: 2, 
+      title: 'Azure Core Services', 
+      videoUrl: 'https://www.youtube.com/embed/NKEFWyqJ5XA',
+      textContent: 'Explore the core services offered by Microsoft Azure, including compute, storage, networking, and databases. This module provides an overview of virtual machines, app services, storage accounts, and Azure SQL Database.'
+    },
+    { 
+      id: 3, 
+      title: 'Azure Security and Compliance', 
+      videoUrl: 'https://www.youtube.com/embed/OAbeIx9xPfU',
+      textContent: 'Learn about Azure security features, identity services, and compliance offerings. This module covers Azure Active Directory, role-based access control, Azure Security Center, and compliance certifications.'
+    },
+    { 
+      id: 4, 
+      title: 'Azure Pricing and Support', 
+      videoUrl: 'https://www.youtube.com/embed/NdqncsMtryY',
+      textContent: 'Understand Azure pricing models, service level agreements (SLAs), and support options. This module covers subscription types, cost management tools, and Azure support plans.'
+    },
+    { 
+      id: 5, 
+      title: 'Getting Started with Azure', 
+      videoUrl: 'https://www.youtube.com/embed/wG0OIz-JTbE',
+      textContent: 'Learn how to create and manage resources in Azure using the Azure portal, Azure CLI, and Azure PowerShell. This module provides hands-on guidance for deploying your first resources in Azure.'
     },
   ],
   'youtube-growth-strategy': [
@@ -233,16 +373,15 @@ export default function CoursePage() {
   const [course, setCourse] = useState<any>(null);
   const [classes, setClasses] = useState<any[]>([]);
   const [courseFormat, setCourseFormat] = useState<'video' | 'text'>('video');
-  const [selectedClassId, setSelectedClassId] = useState<number | null>(null);
-  const [expandedTextClass, setExpandedTextClass] = useState<number | null>(null);
 
   useEffect(() => {
     // Find the course by slug
     const foundCourse = courses.find((c: any) => c.slug === slug);
     if (foundCourse) {
       setCourse(foundCourse);
-      // Set course format from course data
-      setCourseFormat(foundCourse.format || 'video');
+      // Set course format from courseFormats data
+      const format = courseFormats[slug as keyof typeof courseFormats]?.format || 'video';
+      setCourseFormat(format as 'video' | 'text');
     }
 
     // Get classes for this course
@@ -250,10 +389,21 @@ export default function CoursePage() {
     setClasses(courseClasses);
   }, [slug]);
 
-  // Function to get next class recommendation
-  const getNextClass = (currentClassId: number) => {
-    const nextClassId = currentClassId + 1;
-    return classes.find(c => c.id === nextClassId);
+  // Function to format YouTube URLs for embedding if needed
+  const formatVideoUrl = (url: string) => {
+    // Check if it's already an embed URL
+    if (url.includes('/embed/')) {
+      return url;
+    }
+    
+    // Convert YouTube watch URLs to embed format
+    if (url.includes('youtube.com/watch')) {
+      const videoId = new URL(url).searchParams.get('v');
+      return `https://www.youtube.com/embed/${videoId}`;
+    }
+    
+    // Return original URL for other sources
+    return url;
   };
 
   if (!course) {
@@ -373,6 +523,7 @@ export default function CoursePage() {
                     <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clipRule="evenodd"></path>
                   </svg>
                   Text Course
+                  {course?.provider && <span className="ml-1 text-xs">by {course.provider}</span>}
                 </>
               )}
             </div>
@@ -381,99 +532,22 @@ export default function CoursePage() {
           {/* Class List */}
           <div className="space-y-4">
             {classes.map((classItem) => (
-              <div 
+              <Link 
+                href={`/courses/${slug}/${classItem.id}`}
                 key={classItem.id} 
-                className={`border border-gray-200 rounded-lg p-4 hover:border-primary transition-colors ${
-                  courseFormat === 'text' ? 'cursor-pointer' : ''
-                }`}
-                onClick={() => {
-                  if (courseFormat === 'text') {
-                    setExpandedTextClass(expandedTextClass === classItem.id ? null : classItem.id);
-                  }
-                }}
+                className="border border-gray-200 rounded-lg p-4 hover:border-primary transition-colors cursor-pointer block"
               >
                 <div className="flex justify-between items-center">
                   <h3 className="text-lg font-semibold text-text">
                     {classItem.id}. {classItem.title}
                   </h3>
                   
-                  {/* Content Access */}
-                  <div>
-                    {courseFormat === 'video' && classItem.videoUrl && (
-                      <a 
-                        href={classItem.videoUrl} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center text-primary hover:text-accent"
-                      >
-                        <svg className="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zm12.553 1.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path>
-                        </svg>
-                        Watch Video
-                      </a>
-                    )}
-                    {courseFormat === 'text' && (
-                      <button 
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setExpandedTextClass(expandedTextClass === classItem.id ? null : classItem.id);
-                        }}
-                        className="inline-flex items-center text-primary hover:text-accent"
-                      >
-                        {expandedTextClass === classItem.id ? (
-                          <>
-                            <svg className="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                              <path fillRule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clipRule="evenodd"></path>
-                            </svg>
-                            Hide Content
-                          </>
-                        ) : (
-                          <>
-                            <svg className="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                              <path fillRule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clipRule="evenodd"></path>
-                            </svg>
-                            Read Content
-                          </>
-                        )}
-                      </button>
-                    )}
+                  {/* Content Format Icon */}
+                  <div className="bg-gray-100 px-2 py-1 rounded text-xs font-medium text-gray-600">
+                    {classItem.id < 10 ? `0${classItem.id}` : classItem.id}
                   </div>
                 </div>
-                
-                {/* Text Content Display for text courses */}
-                {courseFormat === 'text' && expandedTextClass === classItem.id && (
-                  <div className="mt-4 p-4 bg-gray-50 rounded-md">
-                    <p className="text-neutral-700">{classItem.textContent || "Text content for this lesson is being prepared."}</p>
-                    
-                    {/* Next Class Recommendation */}
-                    {getNextClass(classItem.id) && (
-                      <div className="mt-6 p-4 border border-gray-200 rounded-lg bg-white">
-                        <h4 className="font-semibold text-primary mb-2">Next Recommended Class</h4>
-                        <div className="flex items-center">
-                          <div className="flex-shrink-0 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center mr-4">
-                            <span className="font-bold">{getNextClass(classItem.id)?.id}</span>
-                          </div>
-                          <div>
-                            <p className="font-medium">{getNextClass(classItem.id)?.title}</p>
-                            <button 
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                setExpandedTextClass(getNextClass(classItem.id)?.id || null);
-                              }}
-                              className="text-sm text-primary hover:text-accent mt-1 inline-flex items-center"
-                            >
-                              <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
-                              </svg>
-                              Continue to this class
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
+              </Link>
             ))}
           </div>
         </div>

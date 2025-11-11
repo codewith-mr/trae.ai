@@ -546,10 +546,10 @@ export default function ToolsPage() {
             <button
               key={category}
               onClick={() => handleCategoryChange(category)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+              className={`inline-flex items-center px-4 py-2 rounded-full shadow-sm text-sm font-medium transition-colors border ${
                 selectedCategory === category
-                  ? 'bg-primary text-white'
-                  : 'bg-gray-100 hover:bg-gray-200 text-gray-800'
+                  ? 'bg-primary text-white border-primary'
+                  : 'bg-white text-neutral-800 border-neutral-200 hover:border-primary hover:text-primary'
               }`}
             >
               {category}
