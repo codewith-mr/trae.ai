@@ -5,6 +5,7 @@ import Calculator from '@/components/tools/Calculator';
 import InvoiceGenerator from '@/components/tools/InvoiceGenerator';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import ShareButton from '@/components/ui/ShareButton';
 
 // Tool data mapping
 const toolComponents: Record<string, React.ReactNode> = {
@@ -29,6 +30,7 @@ const toolMetadata: Record<string, { title: string; description: string; categor
 export default function ToolPage() {
   const params = useParams();
   const slug = params.slug as string;
+  const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
   
   const toolComponent = toolComponents[slug];
   const metadata = toolMetadata[slug] || {
@@ -66,9 +68,12 @@ export default function ToolPage() {
             <span className="inline-block px-3 py-1 bg-white/20 text-white rounded-full text-xs font-medium mb-4">
               {metadata.category}
             </span>
-            <h1 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
-              {metadata.title}
-            </h1>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+              <h1 className="text-3xl md:text-4xl font-heading font-bold text-white">
+                {metadata.title}
+              </h1>
+              <ShareButton compact variant="ghost" showLabel={false} url={currentUrl} title={metadata.title} description={metadata.description} className="sm:self-end text-white hover:text-white/80" />
+            </div>
             <p className="text-lg text-secondary-light">
               {metadata.description}
             </p>

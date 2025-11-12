@@ -72,27 +72,29 @@ const ToolCard = ({
         
         <p className="text-neutral-600 mb-6 text-sm line-clamp-3 flex-grow">{description}</p>
 
-        {/* Call to Action */}
-        <Link
-          href={toolUrl || `/tools/${slug}`}
-          className="mt-auto inline-flex items-center justify-center px-4 py-2 bg-primary text-white rounded-md hover:bg-accent transition-colors font-body font-semibold text-sm"
-        >
-          Use Tool
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-4 w-4 ml-2"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+        {/* Actions */}
+        <div className="mt-auto flex items-center justify-between">
+          <Link
+            href={toolUrl || `/tools/${slug}`}
+            className="inline-flex items-center justify-center px-4 py-2 bg-primary text-white rounded-md hover:bg-accent transition-colors font-body font-semibold text-sm"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M14 5l7 7m0 0l-7 7m7-7H3"
-            />
-          </svg>
-        </Link>
+            Use Tool
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4 ml-2"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              />
+            </svg>
+          </Link>
+        </div>
       </div>
     </div>
   );

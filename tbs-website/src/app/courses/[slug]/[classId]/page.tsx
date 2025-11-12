@@ -5,6 +5,7 @@ import { useParams, useRouter } from 'next/navigation';
 import MainLayout from '@/components/layout/MainLayout';
 import Image from 'next/image';
 import Link from 'next/link';
+import ShareButton from '@/components/ui/ShareButton';
 // Import course data from the coursesData.ts file
 import { courses } from '@/app/courses/coursesData';
 
@@ -418,7 +419,10 @@ export default function ClassPage() {
                 Class {classItem.id} of {classData[course.slug as keyof typeof classData]?.length || 0}
               </span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">{classItem.title}</h1>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-2">
+              <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">{classItem.title}</h1>
+                <ShareButton compact variant="ghost" showLabel={false} url={typeof window !== 'undefined' ? window.location.href : ''} title={classItem.title} description={classItem.textContent} />
+            </div>
             <div className="flex items-center text-gray-600">
               <Image
                 src="/user-avatar.svg"

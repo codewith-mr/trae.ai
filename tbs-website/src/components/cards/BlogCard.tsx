@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { } from 'react';
 
 export interface BlogCardProps {
   id: string;
@@ -73,27 +72,28 @@ const BlogCard = ({
             <span className="mx-1">•</span>
             <span>{readTime}</span>
           </div>
-
-          <Link 
-            href={`/blog/${slug}`} 
-            className="text-primary hover:text-accent transition-colors"
-          >
-            <span className="sr-only">View full article about {title}</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+          <div className="flex items-center space-x-3">
+            <Link 
+              href={`/blog/${slug}`} 
+              className="text-primary hover:text-accent transition-colors"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M14 5l7 7m0 0l-7 7m7-7H3"
-              />
-            </svg>
-          </Link>
+              <span className="sr-only">View full article about {title}</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
+              </svg>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

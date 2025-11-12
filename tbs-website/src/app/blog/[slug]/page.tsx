@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import MainLayout from '@/components/layout/MainLayout';
 import { BlogCardProps } from '@/components/cards/BlogCard';
+import ShareButton from '@/components/ui/ShareButton';
 
 // Import the mock data directly from blogData
 import { blogPosts } from '../blogData';
@@ -83,8 +84,8 @@ export default function BlogArticle() {
 
         {/* Article Header */}
         <div className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">{article.title}</h1>
-          <div className="flex items-center mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold mb-2">{article.title}</h1>
+          <div className="flex items-center justify-between mb-4">
             <div className="flex items-center">
               <Image 
                 src={article.author.avatar} 
@@ -95,10 +96,13 @@ export default function BlogArticle() {
               />
               <span className="text-gray-700">{article.author.name}</span>
             </div>
-            <span className="mx-3 text-gray-400">•</span>
-            <span className="text-gray-600">{article.publishDate}</span>
-            <span className="mx-3 text-gray-400">•</span>
-            <span className="text-gray-600">{article.readTime}</span>
+            <div className="flex items-center gap-3">
+              <span className="text-gray-400">•</span>
+              <span className="text-gray-600">{article.publishDate}</span>
+              <span className="text-gray-400">•</span>
+              <span className="text-gray-600">{article.readTime}</span>
+              <ShareButton compact variant="ghost" showLabel={false} url={typeof window !== 'undefined' ? window.location.href : ''} title={article.title} description={article.excerpt} className="text-gray-600 hover:text-primary" />
+            </div>
           </div>
           <div className="bg-gray-100 px-4 py-2 rounded-md inline-block">
             <span className="text-primary">{article.category}</span>

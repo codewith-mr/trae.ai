@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation';
 import MainLayout from '@/components/layout/MainLayout';
 import Image from 'next/image';
 import Link from 'next/link';
+import ShareButton from '@/components/ui/ShareButton';
 // Import course data from the coursesData.ts file
 import { courses } from '@/app/courses/coursesData';
 
@@ -446,7 +447,10 @@ export default function CoursePage() {
                   {course.level}
                 </span>
               </div>
-              <h1 className="text-3xl md:text-4xl font-heading font-bold mb-4">{course.title}</h1>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-2">
+                <h1 className="text-3xl md:text-4xl font-heading font-bold">{course.title}</h1>
+                <ShareButton compact variant="ghost" showLabel={false} url={typeof window !== 'undefined' ? window.location.href : ''} title={course.title} description={course.description} className="text-white hover:text-white/80" />
+              </div>
               <p className="text-secondary text-lg mb-6">{course.description}</p>
               <div className="flex flex-wrap items-center gap-6">
                 <div className="flex items-center">

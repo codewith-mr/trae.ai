@@ -9,16 +9,19 @@ export const metadata = {
 const PrivacyPolicyPage = () => {
   return (
     <main className="bg-background">
-      {/* Hero Section */}
-      <div className="bg-primary/10 py-16">
-        <div className="container mx-auto px-4">
+      {/* Hero Section (match Terms of Service palette) */}
+      <div className="bg-primary py-16 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white/20 to-transparent"></div>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl font-heading font-bold text-primary mb-4">Privacy Policy</h1>
-            <p className="text-lg text-neutral-600 mb-6">
+            <h1 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">Privacy Policy</h1>
+            <p className="text-secondary text-lg md:text-xl max-w-2xl mx-auto">
               Last Updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
             </p>
-            <div className="flex justify-center">
-              <div className="bg-primary/20 w-24 h-1 rounded-full"></div>
+            <div className="mt-8 inline-flex items-center justify-center px-4 py-2 bg-white/10 rounded-full text-secondary backdrop-blur-sm">
+              Your Privacy Matters
             </div>
           </div>
         </div>
@@ -26,7 +29,7 @@ const PrivacyPolicyPage = () => {
       
       {/* Content Section */}
       <div className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
+        <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-sm p-8 -mt-16 relative z-20 border border-neutral-100">
           <div className="flex items-center justify-center mb-8">
             <div className="bg-primary/10 p-4 rounded-full">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">

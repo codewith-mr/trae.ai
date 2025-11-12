@@ -96,8 +96,8 @@ const CourseCard = ({
         {/* Price and duration section removed for cleaner design */}
       </div>
 
-      {/* Call to Action */}
-      <div className="px-5 pb-5">
+      {/* Actions */}
+      <div className="px-5 pb-5 flex items-center justify-between">
         <Link
           href={`/courses/${slug}`}
           className="inline-flex items-center justify-center px-4 py-2 bg-primary text-white rounded-md hover:bg-accent transition-colors font-body font-semibold text-sm"

@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
+import ShareButton from '@/components/ui/ShareButton';
 // Framer Motion is not installed; motion components will be replaced with plain divs
 // If animation is desired, install: npm install framer-motion
 
@@ -248,10 +249,19 @@ export default function TipPage() {
           <span className="inline-block bg-primary text-white text-sm font-semibold py-1 px-3 rounded-full mb-4">
             {tip.category}
           </span>
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{tip.title}</h1>
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">{tip.title}</h1>
           <p className="text-lg text-gray-600 mb-4">{tip.description}</p>
-          <div className="flex items-center text-sm text-gray-500">
+          <div className="flex items-center gap-3 text-sm text-gray-500">
             <span>{tip.readTime}</span>
+            <ShareButton
+              compact
+              variant="ghost"
+              showLabel={false}
+              url={typeof window !== 'undefined' ? window.location.href : ''}
+              title={tip.title}
+              description={tip.description}
+              className="text-gray-500 hover:text-gray-700"
+            />
           </div>
         </div>
         
