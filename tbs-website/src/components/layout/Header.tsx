@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 
-const Header = () => {
+const Header = ({ logoUrl }: { logoUrl: string }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
 
@@ -22,7 +22,7 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex items-center">
-          <Image src="/primary2.png" alt="TBS Logo" className="w-20" width={80} height={20} />
+          <Image src={logoUrl} alt="TBS Logo" className="w-20" width={80} height={20} />
         </Link>
 
         {/* Desktop Navigation */}

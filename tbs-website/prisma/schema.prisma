@@ -1,0 +1,130 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model AdminUser {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
+
+model Course {
+  id           Int      @id @default(autoincrement())
+  slug         String   @unique
+  title        String
+  description  String
+  instructor   String
+  level        String
+  duration     String
+  price        Float
+  discountPrice Float? 
+  rating       Float?
+  reviewCount  Int?
+  imageUrl     String
+  category     String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  homeFeatured HomeSettingsFeaturedCourse[]
+  classes      CourseClass[]
+}
+
+model Blog {
+  id         Int      @id @default(autoincrement())
+  slug       String   @unique
+  title      String
+  excerpt    String
+  content    String?
+  tags       String?
+  authorName String
+  authorAvatar String?
+  category   String
+  publishDate String
+  readTime   String?
+  imageUrl   String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  homeLatest HomeSettingsLatestBlog[]
+}
+
+model Tip {
+  id         Int      @id @default(autoincrement())
+  slug       String   @unique
+  title      String
+  description String
+  content    String?
+  category   String
+  imageUrl   String
+  readTime   String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  homeLatest HomeSettingsLatestTip[]
+}
+
+model HomeSettings {
+  id                Int      @id @default(autoincrement())
+  bannerTitle       String
+  bannerSubtitle    String
+  bannerCtaText     String
+  bannerCtaLink     String
+  bannerSecondaryCtaText String
+  bannerSecondaryCtaLink String
+  updatedAt          DateTime @updatedAt
+
+  featuredCourses HomeSettingsFeaturedCourse[]
+  latestBlogs     HomeSettingsLatestBlog[]
+  latestTips      HomeSettingsLatestTip[]
+}
+
+model SiteSettings {
+  id         Int      @id @default(autoincrement())
+  siteTitle  String
+  logoUrl    String
+  footerText String
+  updatedAt  DateTime @updatedAt
+}
+
+model HomeSettingsFeaturedCourse {
+  id             Int      @id @default(autoincrement())
+  homeSettings   HomeSettings @relation(fields: [homeSettingsId], references: [id])
+  homeSettingsId Int
+  course         Course @relation(fields: [courseId], references: [id])
+  courseId       Int
+}
+
+model HomeSettingsLatestBlog {
+  id             Int      @id @default(autoincrement())
+  homeSettings   HomeSettings @relation(fields: [homeSettingsId], references: [id])
+  homeSettingsId Int
+  blog           Blog @relation(fields: [blogId], references: [id])
+  blogId         Int
+}
+
+model HomeSettingsLatestTip {
+  id             Int      @id @default(autoincrement())
+  homeSettings   HomeSettings @relation(fields: [homeSettingsId], references: [id])
+  homeSettingsId Int
+  tip            Tip @relation(fields: [tipId], references: [id])
+  tipId          Int
+}
+
+model CourseClass {
+  id           Int      @id @default(autoincrement())
+  course       Course   @relation(fields: [courseId], references: [id])
+  courseId     Int
+  index        Int
+  title        String
+  contentType  String   // 'video' or 'text'
+  videoUrl     String?
+  textContent  String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}

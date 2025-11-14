@@ -1,125 +1,54 @@
 import Image from "next/image";
-
 import MainLayout from '@/components/layout/MainLayout';
 import Hero from '@/components/ui/Hero';
-import CourseCard, { CourseCardProps } from '@/components/cards/CourseCard';
-import BlogCard, { BlogCardProps } from '@/components/cards/BlogCard';
-import ToolCard, { ToolCardProps } from '@/components/cards/ToolCard';
+import CourseCard from '@/components/cards/CourseCard';
+import BlogCard from '@/components/cards/BlogCard';
+import ToolCard from '@/components/cards/ToolCard';
 import Link from 'next/link';
+import { prisma } from '@/lib/prisma';
 
-// Mock data for featured courses
-const featuredCourses: CourseCardProps[] = [
-  {
-    id: '1',
-    slug: 'freelance-web-development',
-    title: 'Freelance Web Development Masterclass',
-    description: 'Learn how to build a successful freelance web development business from scratch. This course covers everything from finding clients to delivering projects.',
-    instructor: 'Sarah Johnson',
-    level: 'Intermediate',
-    duration: '12 hours',
-    price: 199.99,
-    discountPrice: 149.99,
-    rating: 4.8,
-    reviewCount: 245,
-    imageUrl: '/web.svg',
-    category: 'Freelancing',
-  },
-  {
-    id: '2',
-    slug: 'youtube-growth-strategy',
-    title: 'YouTube Growth Strategy 2023',
-    description: 'Discover proven strategies to grow your YouTube channel, increase engagement, and monetize your content effectively.',
-    instructor: 'Michael Chen',
-    level: 'Beginner',
-    duration: '8 hours',
-    price: 149.99,
-    rating: 4.7,
-    reviewCount: 189,
-    imageUrl: '/course-content-creation.svg',
-     category: 'Content Creation',
-  },
-  {
-    id: '3',
-    slug: 'stock-trading-fundamentals',
-    title: 'Stock Trading Fundamentals',
-    description: 'Master the basics of stock trading with practical examples and real-world case studies. Learn risk management and portfolio building.',
-    instructor: 'Alex Rivera',
-    level: 'Advanced',
-    duration: '15 hours',
-    price: 249.99,
-    discountPrice: 199.99,
-    rating: 4.9,
-    reviewCount: 312,
-    imageUrl: '/course-trading.svg',
-     category: 'Trading',
-  },
-];
-
-// Mock data for latest blog posts
-const latestBlogPosts: BlogCardProps[] = [
-  {
-    id: '1',
-    slug: 'freelance-success-tips',
-    title: '10 Essential Tips for Freelance Success in 2023',
-    excerpt: 'Discover the key strategies that successful freelancers are using to find high-paying clients and build sustainable businesses.',
-    author: {
-      name: 'Jessica Miller',
-      avatar: '/user-avatar.svg',
+export default async function Home() {
+  const settings = await prisma.homeSettings.findFirst({ where: { id: 1 } });
+  const bannerTitle = settings?.bannerTitle || 'Learn Practical Skills That Convert Directly Into Income';
+  const bannerSubtitle = settings?.bannerSubtitle || 'Actionable courses, tools, and resources for freelancers, content creators, and side-hustlers';
+  const bannerCtaText = settings?.bannerCtaText || 'Explore Courses';
+  const bannerCtaLink = settings?.bannerCtaLink || '/courses';
+  const bannerSecondaryCtaText = settings?.bannerSecondaryCtaText || 'Try Free Tools';
+  const bannerSecondaryCtaLink = settings?.bannerSecondaryCtaLink || '/tools';
+  const featuredCoursesLinks = await prisma.homeSettingsFeaturedCourse.findMany({ where: { homeSettingsId: settings?.id || 1 } });
+  const featuredCourses = await prisma.course.findMany({ where: { id: { in: featuredCoursesLinks.map(l => l.courseId) } } });
+  const latestBlogsLinks = await prisma.homeSettingsLatestBlog.findMany({ where: { homeSettingsId: settings?.id || 1 } });
+  const latestBlogPosts = await prisma.blog.findMany({ where: { id: { in: latestBlogsLinks.map(l => l.blogId) } } });
+  const featuredTools = [
+    {
+      id: '1',
+      slug: 'seo-analyzer',
+      title: 'SEO Analyzer',
+      description: "Analyze your website's SEO performance and get actionable recommendations to improve your search engine rankings.",
+      category: 'SEO',
+      imageUrl: '/tool-image.svg',
+      isPopular: true,
     },
-    category: 'Tips & Tricks',
-    publishDate: 'June 15, 2023',
-    readTime: '5 min read',
-    imageUrl: '/blog-post.svg',
-  },
-  {
-    id: '2',
-    slug: 'youtube-algorithm-changes',
-    title: 'Understanding YouTube\'s Latest Algorithm Changes',
-    excerpt: 'A detailed breakdown of the recent YouTube algorithm updates and how content creators can adapt their strategies accordingly.',
-    author: {
-      name: 'David Wong',
-      avatar: '/user-avatar.svg',
+    {
+      id: '2',
+      slug: 'income-calculator',
+      title: 'Freelance Income Calculator',
+      description: 'Calculate your potential freelance income based on your rates, hours, and expenses. Plan your financial future with confidence.',
+      category: 'Calculators',
+      imageUrl: '/tool-image.svg',
+      isNew: true,
     },
-    category: 'Content Creation',
-    publishDate: 'June 10, 2023',
-    readTime: '8 min read',
-    imageUrl: '/blog-post.svg',
-  },
-];
-
-// Mock data for featured tools
-const featuredTools: ToolCardProps[] = [
-  {
-    id: '1',
-    slug: 'seo-analyzer',
-    title: 'SEO Analyzer',
-    description: 'Analyze your website\'s SEO performance and get actionable recommendations to improve your search engine rankings.',
-    category: 'SEO',
-    imageUrl: '/tool-image.svg',
-    isPopular: true,
-  },
-  {
-    id: '2',
-    slug: 'income-calculator',
-    title: 'Freelance Income Calculator',
-    description: 'Calculate your potential freelance income based on your rates, hours, and expenses. Plan your financial future with confidence.',
-    category: 'Calculators',
-    imageUrl: '/tool-image.svg',
-    isNew: true,
-  },
-];
-
-export default function Home() {
+  ];
   return (
     <MainLayout>
       {/* Hero Section */}
       <Hero
-        title="Learn Practical Skills That Convert Directly Into Income"
-        subtitle="Actionable courses, tools, and resources for freelancers, content creators, and side-hustlers"
-        ctaText="Explore Courses"
-        ctaLink="/courses"
-        secondaryCtaText="Try Free Tools"
-        secondaryCtaLink="/tools"
+        title={bannerTitle}
+        subtitle={bannerSubtitle}
+        ctaText={bannerCtaText}
+        ctaLink={bannerCtaLink}
+        secondaryCtaText={bannerSecondaryCtaText}
+        secondaryCtaLink={bannerSecondaryCtaLink}
       />
 
       {/* Mini Categories Section */}
@@ -202,7 +131,21 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredCourses.map((course) => (
-              <CourseCard key={course.id} {...course} />
+              <CourseCard key={String(course.id)}
+                id={String(course.id)}
+                slug={course.slug}
+                title={course.title}
+                description={course.description}
+                instructor={course.instructor}
+                level={course.level}
+                duration={course.duration}
+                price={course.price}
+                discountPrice={course.discountPrice ?? undefined}
+                rating={course.rating ?? undefined}
+                reviewCount={course.reviewCount ?? undefined}
+                imageUrl={course.imageUrl}
+                category={course.category}
+              />
             ))}
           </div>
         </div>
@@ -321,7 +264,17 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {latestBlogPosts.map((post) => (
-              <BlogCard key={post.id} {...post} />
+              <BlogCard key={String(post.id)}
+                id={String(post.id)}
+                slug={post.slug}
+                title={post.title}
+                excerpt={post.excerpt}
+                author={{ name: post.authorName, avatar: post.authorAvatar || '/user-avatar.svg' }}
+                category={post.category}
+                publishDate={post.publishDate}
+                readTime={post.readTime ?? undefined}
+                imageUrl={post.imageUrl}
+              />
             ))}
           </div>
         </div>

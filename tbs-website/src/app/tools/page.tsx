@@ -1,9 +1,6 @@
-"use client";
-
 import MainLayout from '@/components/layout/MainLayout';
-import ToolCard, { ToolCardProps } from '@/components/cards/ToolCard';
-import Link from 'next/link';
-import { useState } from 'react';
+import ToolsClient from '@/components/pages/ToolsClient';
+import type { ToolCardProps } from '@/components/cards/ToolCard';
 
 // Tool categories
 const toolCategories = [
@@ -521,97 +518,9 @@ const categories = [
 ];
 
 export default function ToolsPage() {
-  const [selectedCategory, setSelectedCategory] = useState('All');
-
-  const handleCategoryChange = (category: string) => {
-    setSelectedCategory(category);
-  };
-
   return (
     <MainLayout>
-      {/* Hero Section */}
-      <div className="bg-gradient-to-r from-primary/10 to-secondary/10 py-16">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-center mb-6">Tools & Resources</h1>
-          <p className="text-lg text-center max-w-3xl mx-auto mb-8">
-            Discover our collection of free and premium tools designed to help you work smarter, not harder.
-          </p>
-        </div>
-      </div>
-
-      {/* Category Navigation */}
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex flex-wrap justify-center gap-3 mb-8">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => handleCategoryChange(category)}
-              className={`inline-flex items-center px-4 py-2 rounded-full shadow-sm text-sm font-medium transition-colors border ${
-                selectedCategory === category
-                  ? 'bg-primary text-white border-primary'
-                  : 'bg-white text-neutral-800 border-neutral-200 hover:border-primary hover:text-primary'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Tool Categories */}
-      <div className="container mx-auto px-4 py-8">
-        {toolCategories.map((category) => {
-          const categoryTools = tools.filter(tool => 
-            (selectedCategory === 'All' || selectedCategory === category.name) && 
-            tool.category === category.name
-          );
-          
-          if (categoryTools.length === 0) return null;
-          
-          return (
-            <div key={category.id} className="mb-16">
-              <div className="flex items-center mb-6">
-                <span className="text-3xl mr-3">{category.icon}</span>
-                <h2 className="text-2xl md:text-3xl font-bold">{category.name}</h2>
-              </div>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {categoryTools.map((tool) => (
-                  <ToolCard
-                    key={tool.id}
-                    id={tool.id}
-                    slug={tool.slug}
-                    title={tool.title}
-                    description={tool.description}
-                    category={tool.category}
-                    imageUrl={tool.imageUrl}
-                    isPopular={tool.isPopular}
-                    isNew={tool.isNew}
-                    isFree={tool.isFree}
-                    toolUrl={tool.toolUrl}
-                  />
-                ))}
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Call to Action */}
-      <div className="bg-gradient-to-r from-primary/10 to-secondary/10 py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Can&apos;t find what you&apos;re looking for?</h2>
-          <p className="text-lg mb-8 max-w-2xl mx-auto">
-            We&apos;re constantly adding new tools to our collection. Let us know what you need!
-          </p>
-          <Link 
-            href="/contact" 
-            className="bg-primary hover:bg-primary-dark text-white font-medium px-6 py-3 rounded-lg transition-colors"
-          >
-            Request a Tool
-          </Link>
-        </div>
-      </div>
+      <ToolsClient />
     </MainLayout>
   );
 }

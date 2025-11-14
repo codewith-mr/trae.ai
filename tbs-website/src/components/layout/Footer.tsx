@@ -1,8 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { prisma } from '@/lib/prisma';
 
-const Footer = () => {
+const Footer = async () => {
   const currentYear = new Date().getFullYear();
+  const settings = await prisma.siteSettings.findFirst({ where: { id: 1 } });
+  const footerText = settings?.footerText || `© ${currentYear} The Business Sidekick. All rights reserved.`;
 
   return (
     <footer className="bg-primary text-white pt-12 pb-6">
@@ -129,7 +132,7 @@ const Footer = () => {
         {/* Bottom Footer */}
         <div className="pt-8 border-t border-accent mt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-white text-sm mb-4 md:mb-0 font-body">
-            &copy; {currentYear} The Business Sidekick. All rights reserved.
+            {footerText}
           </p>
           <div className="flex space-x-6">
             <Link href="/privacy-policy" className="text-white hover:text-secondary transition-colors text-sm font-body flex items-center">

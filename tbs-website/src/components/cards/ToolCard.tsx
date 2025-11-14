@@ -64,7 +64,7 @@ const ToolCard = ({
           <span className="text-xs font-semibold text-neutral-600">{category}</span>
         </div>
         
-        <Link href={`/tools/${slug}`} className="group">
+        <Link href={`/tools/${slug}`} prefetch={false} className="group">
           <h3 className="text-xl font-heading font-bold text-text mb-2 group-hover:text-primary transition-colors">
             {title}
           </h3>
@@ -76,6 +76,7 @@ const ToolCard = ({
         <div className="mt-auto flex items-center justify-between">
           <Link
             href={toolUrl || `/tools/${slug}`}
+            prefetch={false}
             className="inline-flex items-center justify-center px-4 py-2 bg-primary text-white rounded-md hover:bg-accent transition-colors font-body font-semibold text-sm"
           >
             Use Tool

@@ -1,13 +1,8 @@
-"use client";
-
-import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
 import MainLayout from '@/components/layout/MainLayout';
 import Image from 'next/image';
 import Link from 'next/link';
 import ShareButton from '@/components/ui/ShareButton';
-// Import course data from the coursesData.ts file
-import { courses } from '@/app/courses/coursesData';
+import { prisma } from '@/lib/prisma';
 
 // Mock course data with single format per course
 const courseFormats = {
@@ -368,27 +363,13 @@ const classData = {
   ],
 };
 
-export default function CoursePage() {
-  const params = useParams();
-  const slug = params?.slug as string;
-  const [course, setCourse] = useState<any>(null);
-  const [classes, setClasses] = useState<any[]>([]);
-  const [courseFormat, setCourseFormat] = useState<'video' | 'text'>('video');
-
-  useEffect(() => {
-    // Find the course by slug
-    const foundCourse = courses.find((c: any) => c.slug === slug);
-    if (foundCourse) {
-      setCourse(foundCourse);
-      // Set course format from courseFormats data
-      const format = courseFormats[slug as keyof typeof courseFormats]?.format || 'video';
-      setCourseFormat(format as 'video' | 'text');
-    }
-
-    // Get classes for this course
-    const courseClasses = classData[slug as keyof typeof classData] || [];
-    setClasses(courseClasses);
-  }, [slug]);
+export default async function CoursePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const course = await prisma.course.findUnique({ where: { slug } });
+  const courseFormat: 'video' | 'text' = (courseFormats as any)[slug]?.format || 'video';
+  const classes = course
+    ? await prisma.courseClass.findMany({ where: { courseId: course.id }, orderBy: { index: 'asc' } })
+    : [];
 
   // Function to format YouTube URLs for embedding if needed
   const formatVideoUrl = (url: string) => {
@@ -449,7 +430,7 @@ export default function CoursePage() {
               </div>
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-2">
                 <h1 className="text-3xl md:text-4xl font-heading font-bold">{course.title}</h1>
-                <ShareButton compact variant="ghost" showLabel={false} url={typeof window !== 'undefined' ? window.location.href : ''} title={course.title} description={course.description} className="text-white hover:text-white/80" />
+                <ShareButton compact variant="ghost" showLabel={false} url={`/courses/${slug}`} title={course.title} description={course.description} className="text-white hover:text-white/80" />
               </div>
               <p className="text-secondary text-lg mb-6">{course.description}</p>
               <div className="flex flex-wrap items-center gap-6">
@@ -535,24 +516,28 @@ export default function CoursePage() {
 
           {/* Class List */}
           <div className="space-y-4">
-            {classes.map((classItem) => (
-              <Link 
-                href={`/courses/${slug}/${classItem.id}`}
-                key={classItem.id} 
-                className="border border-gray-200 rounded-lg p-4 hover:border-primary transition-colors cursor-pointer block"
-              >
-                <div className="flex justify-between items-center">
-                  <h3 className="text-lg font-semibold text-text">
-                    {classItem.id}. {classItem.title}
-                  </h3>
-                  
-                  {/* Content Format Icon */}
-                  <div className="bg-gray-100 px-2 py-1 rounded text-xs font-medium text-gray-600">
-                    {classItem.id < 10 ? `0${classItem.id}` : classItem.id}
+            {classes.length > 0 ? (
+              classes.map((classItem: any) => (
+                <Link 
+                  href={`/courses/${slug}/${classItem.id}`}
+                  key={classItem.id} 
+                  className="border border-gray-200 rounded-lg p-4 hover:border-primary transition-colors cursor-pointer block"
+                >
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-lg font-semibold text-text">
+                      {classItem.id}. {classItem.title}
+                    </h3>
+                    <div className="bg-gray-100 px-2 py-1 rounded text-xs font-medium text-gray-600">
+                      {classItem.id < 10 ? `0${classItem.id}` : classItem.id}
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              ))
+            ) : (
+              <div className="text-center py-8 text-neutral-700">
+                No classes added yet for this course.
+              </div>
+            )}
           </div>
         </div>
       </div>
